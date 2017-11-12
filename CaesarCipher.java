@@ -2,9 +2,21 @@ import java.util.*;
 
 class CaesarCipher {
   public static StringBuffer encrypt(String text, int shift) {
-    StringBuffer result = new StringBuffer();
+    StringBuffer output = new StringBuffer();
     
-    return result;
+    for (int i = 0; i < text.length(); i++) {
+      // handle uppercase, 65 is A
+      if (Character.isUpperCase(text.charAt(i))) {
+        char c = (char) (((int)text.charAt(i) + shift - 65) % 26 + 65);
+        output.append(c);
+      }
+      else {
+        // lowercase, 97 is a
+        char c = (char) (((int)text.charAt(i) + shift - 97) % 26 + 97);
+        output.append(c);
+      }
+    }
+    return output;
   }
   
   public static void main(String[] args) {
